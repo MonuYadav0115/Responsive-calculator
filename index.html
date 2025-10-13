@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f0f0;
+      margin: 0;
+    }
+
+    .cont {
+      width: 90%;
+      max-width: 400px;
+      background-color: black;
+      padding: 15px;
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 13px;
+    }
+
+    input {
+      grid-column: 1/5;
+      text-align: right;
+      padding: 15px;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      min-height: 60px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .c20 {
+      grid-column: 3/5;
+    }
+
+    .c2, .c3, .c4, .c5, .c9, .c13, .c17, .c20 {
+      background-color: rgb(79, 147, 248);
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 500px) {
+      button {
+        font-size: 1rem;
+        min-height: 50px;
+      }
+
+      input {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cont">
+    <input type="text" class="c1" readonly />
+    <button class="c2" onclick="fun('ac')">AC</button>
+    <button class="c3" onclick="fun('del')">DEL</button>
+    <button class="c4" onclick="fun('%')">%</button>
+    <button class="c5" onclick="fun('+')">+</button>
+    <button class="c6" onclick="fun('7')">7</button>
+    <button class="c7" onclick="fun('8')">8</button>
+    <button class="c8" onclick="fun('9')">9</button>
+    <button class="c9" onclick="fun('-')">-</button>
+    <button class="c10" onclick="fun('4')">4</button>
+    <button class="c11" onclick="fun('5')">5</button>
+    <button class="c12" onclick="fun('6')">6</button>
+    <button class="c13" onclick="fun('*')">*</button>
+    <button class="c14" onclick="fun('3')">3</button>
+    <button class="c15" onclick="fun('2')">2</button>
+    <button class="c16" onclick="fun('1')">1</button>
+    <button class="c17" onclick="fun('/')">/</button>
+    <button class="c18" onclick="fun('0')">0</button>
+    <button class="c19" onclick="fun('.')">.</button>
+    <button class="c20" onclick="fun('=')">=</button>
+  </div>
+
+  <script>
+    let ipr = document.getElementsByTagName("input")[0];
+    let s = "";
+    function fun(ch) {
+      if (ch === "ac") {
+        s = "";
+        ipr.value = "";
+      } else if (ch === "del") {
+        s = s.slice(0, -1);
+        ipr.value = s;
+      } else if (ch === "=") {
+        try {
+          ipr.value = eval(s);
+          s = "";
+        } catch {
+          ipr.value = "Error";
+          s = "";
+        }
+      } else {
+        s += ch;
+        ipr.value = s;
+      }
+    }
+  </script>
+</body>
+</html>
