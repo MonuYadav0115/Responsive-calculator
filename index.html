@@ -4,73 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Responsive Calculator</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #f0f0f0;
-      margin: 0;
-    }
-
-    .cont {
-      width: 90%;
-      max-width: 400px;
-      background-color: black;
-      padding: 15px;
-      border-radius: 15px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      gap: 13px;
-    }
-
-    input {
-      grid-column: 1/5;
-      text-align: right;
-      padding: 15px;
-      font-size: 1.5rem;
-      border-radius: 10px;
-      border: none;
-    }
-
-    button {
-      border-radius: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-      min-height: 60px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .c20 {
-      grid-column: 3/5;
-    }
-
-    .c2, .c3, .c4, .c5, .c9, .c13, .c17, .c20 {
-      background-color: rgb(79, 147, 248);
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-
-    @media (max-width: 500px) {
-      button {
-        font-size: 1rem;
-        min-height: 50px;
-      }
-
-      input {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- <h1>Calculator</h1> -->
 
   <div class="cont">
     <input type="text" class="c1" readonly />
@@ -95,29 +32,6 @@
     <button class="c20" onclick="fun('=')">=</button>
   </div>
 
-  <script>
-    let ipr = document.getElementsByTagName("input")[0];
-    let s = "";
-    function fun(ch) {
-      if (ch === "ac") {
-        s = "";
-        ipr.value = "";
-      } else if (ch === "del") {
-        s = s.slice(0, -1);
-        ipr.value = s;
-      } else if (ch === "=") {
-        try {
-          ipr.value = eval(s);
-          s = "";
-        } catch {
-          ipr.value = "Error";
-          s = "";
-        }
-      } else {
-        s += ch;
-        ipr.value = s;
-      }
-    }
-  </script>
+  <script src="calculator.js"></script>
 </body>
 </html>
